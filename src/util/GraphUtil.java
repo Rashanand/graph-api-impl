@@ -12,8 +12,11 @@ public class GraphUtil {
             edges = new ArrayList<>();
             for (int v = 0; v < graph.getVertices(); v++) {
                 List<Integer> adjs = graph.getAdjecents(v);
-                for (int w = 0; w < adjs.size(); w++) {
-                    edges.add(v + " - " + adjs.get(w));
+                System.out.println(v+" : "+adjs);
+                if(adjs != null) {
+                    for (int w = 0; w < adjs.size(); w++) {
+                        edges.add(v + " - " + adjs.get(w));
+                    }
                 }
             }
         }
@@ -32,7 +35,24 @@ public class GraphUtil {
 
     public static int getMaxIndegree(Graph graph) {
         int maxIndegree = 0;
-
+        if(graph != null) {
+            for (int v = 0; v < graph.getVertices(); v++) {
+                int indegreeV = graph.getAdjecents(v).size();
+                if (indegreeV > maxIndegree) {
+                    maxIndegree = indegreeV;
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("Invalid params!!");
+        }
         return maxIndegree;
+    }
+
+    public static int getAverageIndegree(Graph graph) {
+        int avgIndegree = 0;
+        if(graph != null) {
+            avgIndegree = 2 * graph.getEdges() / graph.getVertices();
+        }
+        return avgIndegree;
     }
 }

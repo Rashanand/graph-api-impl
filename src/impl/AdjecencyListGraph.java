@@ -25,17 +25,17 @@ public class AdjecencyListGraph implements Graph {
 
     @Override
     public void addEdge(int start, int end) {
-        if(start > 0 && start < graph.length && end > 0 && end < graph.length) {
-           Node node = new Node(end - 1);
+        if(start >= 0 && start < graph.length && end >= 0 && end < graph.length) {
+           Node node = new Node(end);
 
-           if(graph[start - 1] != null) {
-               Node curr = graph[start - 1];
+           if(graph[start] != null) {
+               Node curr = graph[start];
                while (curr.next != null) {
                    curr = curr.next;
                }
                curr.next = node;
            } else {
-               graph[start - 1] = node;
+               graph[start] = node;
            }
         } else {
             throw new IllegalArgumentException("Inavlid start or end!!");
@@ -63,9 +63,9 @@ public class AdjecencyListGraph implements Graph {
     @Override
     public List<Integer> getAdjecents(int v) {
         List<Integer> adjs = null;
-        if(graph[v-1] != null) {
+        if(graph[v] != null) {
             adjs = new ArrayList<>();
-            Node curr = graph[v-1];
+            Node curr = graph[v];
             while (curr != null) {
                 adjs.add(curr.data);
                 curr = curr.next;
