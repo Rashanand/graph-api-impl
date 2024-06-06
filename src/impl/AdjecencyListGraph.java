@@ -38,7 +38,7 @@ public class AdjecencyListGraph implements Graph {
                graph[start] = node;
            }
         } else {
-            throw new IllegalArgumentException("Inavlid start or end!!");
+            throw new IllegalArgumentException("Inavlid source or destination!!");
         }
     }
 
