@@ -3,9 +3,9 @@ package test;
 import api.Graph;
 import client.BreadthFirstPath;
 
-public class BFSTest extends ListGraphTest{
+public class BFSTest {
     public static void main(String[] args) {
-        Graph graph = testCreateAndAddEdge();
+        Graph graph = ListGraphTest.testCreateAndAddEdge();
         //printAllEdges(graph);
 
         BreadthFirstPath breadthFirstPath = new BreadthFirstPath(graph, 0);
